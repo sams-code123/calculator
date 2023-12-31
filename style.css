@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+    font-family:Verdana, sans-serif;
+}
+
+body {
+    background-color: rgb(230, 230, 230);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculator {
+    width: 33%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+    border-radius: 2rem;
+}
+
+.display {
+    width: 100%;
+    background-color: rgb(40, 40, 40);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    color: rgb(240, 240, 240);
+    font-size: 4rem;
+    height: 7rem;
+    border-radius: 2rem 2rem 0rem 0rem;
+    padding-right: 1rem;
+}
+
+.blank {
+    width: 50%;
+    background-color: rgb(60, 60, 60);
+    height: 6rem;
+    /* border: .2rem solid white; */
+}
+
+.clear {
+    width: 25%;
+    background-color: rgb(60, 60, 60);
+    height: 6rem;
+    border: .2rem solid grey;
+    color: rgb(240, 240, 240);
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: none;
+    border-right: none;
+}
+
+.divi {
+    width: 25%;
+    background-color: rgb(36, 130, 224);
+    height: 6rem;
+    border: .2rem solid grey;
+    color: rgb(240, 240, 240);
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: none;
+}
+
+.number {
+    width: 25%;
+    background-color: rgb(60, 60, 60);
+    height: 6rem;
+    border: .2rem solid grey;
+    color: rgb(240, 240, 240);
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: none;
+    border-bottom: none;
+}
+
+.multi {
+    width: 25%;
+    background-color: rgb(36, 130, 224);
+    height: 6rem;
+    border: .2rem solid grey;
+    color: rgb(240, 240, 240);
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: none;
+}
+
+.zero {
+    width: 50%;
+    background-color: rgb(60, 60, 60);
+    height: 6rem;
+    border: .2rem solid grey;
+    color: rgb(240, 240, 240);
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: none;
+    border-radius: 0rem 0rem 0rem 2rem;
+}
+
+.decimal {
+    width: 25%;
+    background-color: rgb(60, 60, 60);
+    height: 6rem;
+    border: .2rem solid grey;
+    color: rgb(240, 240, 240);
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: none;
+}
+
+.equals {
+    width: 25%;
+    background-color: rgb(36, 130, 224);
+    height: 6rem;
+    border: .2rem solid grey;
+    color: rgb(240, 240, 240);
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0rem 0rem 2rem 0rem;
+}
+
+/* this is to make the symbols in the buttons to blink when clicked */
+.blink {
+    animation: blink 0.5s infinite;
+  }
+  
+  @keyframes blink {
+    50% {
+      color: black;
+    }
+  }
