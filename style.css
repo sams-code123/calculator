@@ -32,13 +32,18 @@ body {
     height: 7rem;
     border-radius: 2rem 2rem 0rem 0rem;
     padding-right: 1rem;
+    border: .2rem solid grey;
+    border-bottom: none;
 }
 
 .blank {
     width: 50%;
     background-color: rgb(60, 60, 60);
     height: 6rem;
-    /* border: .2rem solid white; */
+    border: .2rem solid grey;
+    border-bottom: none;
+    border-right: none;
+    
 }
 
 .clear {

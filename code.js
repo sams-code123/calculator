@@ -53,34 +53,35 @@ function operate(n1, op, n2){
 // here I just declare variables for later use
 
 const displae = document.querySelector('#screen');
-let sum = 0;
+let screen = '';
 let temp = '';
 let pars = 0;
-let combo = 0;
+let sum = 0;
 
 // here are the functions for the operations buttons ///////////////////////////////////////////////
 
 // this is the function for the addition button
 const pluss = document.querySelector('#pluss');
 pluss.addEventListener('click', () => {
-    if (combo != 0){
-        pars = parseFloat(sum);
-        combo = operate(combo, operator, pars);
-        console.log('combo');
-        console.log(combo);
-        sum = '';
-        displae.textContent = combo;
+    if (sum != 0 && operator != ''){
+        pars = parseFloat(screen);
+        console.log('are we here?');
+        sum = operate(sum, operator, pars);
+        screen = '';
+        displae.textContent = sum;
         operator = '+';
     }
-    if (combo === 0){
-        pars = parseFloat(sum);
-        console.log('pars');
-        console.log(pars);
-        combo = pars;
-        console.log('combo');
-        console.log(combo);
-        sum = '';
-        displae.textContent = combo;
+    if (sum === 0){
+        pars = parseFloat(screen);
+        sum = pars;
+        screen = '';
+        displae.textContent = sum;
+        operator = '+';
+    }
+    if (operator === '' && sum != 0){
+        console.log("now we're here");
+        screen = '';
+        displae.textContent = sum;
         operator = '+';
     }
     
@@ -92,24 +93,24 @@ pluss.addEventListener('click', () => {
 // this is the function for the subtraction button
 const subtruct = document.querySelector('#subtruct');
 subtruct.addEventListener('click', () => {
-    if (combo != 0){
-        pars = parseFloat(sum);
-        combo = operate(combo, operator, pars);
-        console.log('combo');
-        console.log(combo);
-        sum = '';
-        displae.textContent = combo;
+    if (sum != 0 && operator != ''){
+        pars = parseFloat(screen);
+        sum = operate(sum, operator, pars);
+        screen = '';
+        displae.textContent = sum;
         operator = '-';
     }
-    if (combo === 0){
-        pars = parseFloat(sum);
-        console.log('pars');
-        console.log(pars);
-        combo = pars;
-        console.log('combo');
-        console.log(combo);
-        sum = '';
-        displae.textContent = combo;
+    if (sum === 0){
+        pars = parseFloat(screen);
+        sum = pars;
+        screen = '';
+        displae.textContent = sum;
+        operator = '-';
+    }
+    if (operator === '' && sum != 0){
+        console.log("now we're here");
+        screen = '';
+        displae.textContent = sum;
         operator = '-';
     }
     
@@ -121,24 +122,25 @@ subtruct.addEventListener('click', () => {
 // this is the code for the division button
 const divides = document.querySelector('#divides');
 divides.addEventListener('click', () => {
-    if (combo != 0){
-        pars = parseFloat(sum);
-        combo = operate(combo, operator, pars);
-        console.log('combo');
-        console.log(combo);
-        sum = '';
-        displae.textContent = combo;
+    if (sum != 0 && operator != ''){
+        pars = parseFloat(screen);
+        sum = operate(sum, operator, pars);
+        screen = '';
+        displae.textContent = sum;
         operator = '/';
     }
-    if (combo === 0){
-        pars = parseFloat(sum);
-        console.log('pars');
-        console.log(pars);
-        combo = pars;
-        console.log('combo');
-        console.log(combo);
-        sum = '';
-        displae.textContent = combo;
+    if (sum === 0){
+        pars = parseFloat(screen);
+        sum = pars;
+        screen = '';
+        displae.textContent = sum;
+        operator = '/';
+    }
+    if (operator === '' && sum != 0){
+        console.log("now we're here");
+        pars = parseFloat(screen);
+        screen = '';
+        displae.textContent = sum;
         operator = '/';
     }
     
@@ -150,24 +152,24 @@ divides.addEventListener('click', () => {
 // this is the function for the multiplication button
 const multiplier = document.querySelector('#multiplier');
 multiplier.addEventListener('click', () => {
-    if (combo != 0){
-        pars = parseFloat(sum);
-        combo = operate(combo, operator, pars);
-        console.log('combo');
-        console.log(combo);
-        sum = '';
-        displae.textContent = combo;
+    if (sum != 0 && operator != ''){
+        pars = parseFloat(screen);
+        sum = operate(sum, operator, pars);
+        screen = '';
+        displae.textContent = sum;
         operator = '*';
     }
-    if (combo === 0){
-        pars = parseFloat(sum);
-        console.log('pars');
-        console.log(pars);
-        combo = pars;
-        console.log('combo');
-        console.log(combo);
-        sum = '';
-        displae.textContent = combo;
+    if (sum === 0){
+        pars = parseFloat(screen);
+        sum = pars;
+        screen = '';
+        displae.textContent = sum;
+        operator = '*';
+    }
+    if (operator === '' && sum != 0){
+        console.log("now we're here");
+        screen = '';
+        displae.textContent = sum;
         operator = '*';
     }
     
@@ -184,20 +186,17 @@ function isInt(n) {
 //  this is the function for the equals button
 const equal = document.querySelector('#equal');
 equal.addEventListener('click', () => {
-    pars = parseFloat(sum);
-    console.log('pars');
-    console.log(pars);
-    combo = operate(combo, operator, pars);
-    console.log('combo');
-    console.log(combo);
-    sum = '';
-    if (!isInt(combo)){
-        combo = combo.toFixed(3);
+    pars = parseFloat(screen);
+    sum = operate(sum, operator, pars);
+    screen = '';
+    if (!isInt(sum)){
+        sum = sum.toFixed(3);
     }
-    displae.textContent = combo;
-    combo = 0;
+    displae.textContent = sum;
+    console.log('did we get to equal coperator = ""?');
     operator = '';
-
+    screen = '';
+    temp = '';
      // this code makes the node symbol blink when clicked
      equal.classList.add('blink'); 
      setTimeout(() => equal.classList.remove('blink'), 200);
@@ -208,8 +207,9 @@ equal.addEventListener('click', () => {
 const ac = document.querySelector('#ac');
 ac.addEventListener('click', () => {
     temp = '';
-    sum = '';
-    combo = 0;
+    screen = '';
+    sum = 0;
+    operator = '';
     displae.textContent = '0';
      // this code makes the node symbol blink when clicked
      ac.classList.add('blink'); 
@@ -222,9 +222,10 @@ ac.addEventListener('click', () => {
 
 const zero = document.querySelector('#zero');
 zero.addEventListener('click', () => {
+    displae.textContent = ''; // this line gets rid of the initial leading 0
     temp = '0';
-    sum = sum + temp;
-    displae.textContent = sum;
+    screen = screen + temp;
+    displae.textContent = screen;
 
     zero.classList.add('blink'); 
     setTimeout(() => zero.classList.remove('blink'), 200);
@@ -232,9 +233,10 @@ zero.addEventListener('click', () => {
 
 const one = document.querySelector('#one');
 one.addEventListener('click', () => {
+    displae.textContent = ''; // this line gets rid of the initial leading 0
     temp = '1';
-    sum = sum + temp;
-    displae.textContent = sum;
+    screen = screen + temp;
+    displae.textContent = screen;
 
     one.classList.add('blink');
     setTimeout(() => one.classList.remove('blink'), 200);
@@ -242,9 +244,10 @@ one.addEventListener('click', () => {
 
 const two = document.querySelector('#two');
 two.addEventListener('click', () => {
+    displae.textContent = ''; // this line gets rid of the initial leading 0
     temp = '2';
-    sum = sum + temp;
-    displae.textContent = sum;
+    screen = screen + temp;
+    displae.textContent = screen;
 
     // this code makes the node symbol blink when clicked
     two.classList.add('blink'); 
@@ -253,9 +256,10 @@ two.addEventListener('click', () => {
 
 const three = document.querySelector('#three');
 three.addEventListener('click', () => {
+    displae.textContent = ''; // this line gets rid of the initial leading 0
     temp = '3';
-    sum = sum + temp;
-    displae.textContent = sum;
+    screen = screen + temp;
+    displae.textContent = screen;
 
     // this code makes the node symbol blink when clicked
     three.classList.add('blink'); 
@@ -264,9 +268,10 @@ three.addEventListener('click', () => {
 
 const four = document.querySelector('#four');
 four.addEventListener('click', () => {
+    displae.textContent = ''; // this line gets rid of the initial leading 0
     temp = '4';
-    sum = sum + temp;
-    displae.textContent = sum;
+    screen = screen + temp;
+    displae.textContent = screen;
 
     // this code makes the node symbol blink when clicked
     four.classList.add('blink'); 
@@ -275,9 +280,10 @@ four.addEventListener('click', () => {
 
 const five = document.querySelector('#five');
 five.addEventListener('click', () => {
+    displae.textContent = ''; // this line gets rid of the initial leading 0
     temp = '5';
-    sum = sum + temp;
-    displae.textContent = sum;
+    screen = screen + temp;
+    displae.textContent = screen;
 
     // this code makes the node symbol blink when clicked
     five.classList.add('blink'); 
@@ -286,9 +292,10 @@ five.addEventListener('click', () => {
 
 const six = document.querySelector('#six');
 six.addEventListener('click', () => {
+    displae.textContent = ''; // this line gets rid of the initial leading 0
     temp = '6';
-    sum = sum + temp;
-    displae.textContent = sum;
+    screen = screen + temp;
+    displae.textContent = screen;
 
     // this code makes the node symbol blink when clicked
     six.classList.add('blink'); 
@@ -297,9 +304,10 @@ six.addEventListener('click', () => {
 
 const seven = document.querySelector('#seven');
 seven.addEventListener('click', () => {
+    displae.textContent = ''; // this line gets rid of the initial leading 0
     temp = '7';
-    sum = sum + temp;
-    displae.textContent = sum;
+    screen = screen + temp;
+    displae.textContent = screen;
 
     // this code makes the node symbol blink when clicked
     seven.classList.add('blink'); 
@@ -308,9 +316,10 @@ seven.addEventListener('click', () => {
 
 const eight = document.querySelector('#eight');
 eight.addEventListener('click', () => {
+    displae.textContent = ''; // this line gets rid of the initial leading 0
     temp = '8';
-    sum = sum + temp;
-    displae.textContent = sum;
+    screen = screen + temp;
+    displae.textContent = screen;
 
     // this code makes the node symbol blink when clicked
     eight.classList.add('blink'); 
@@ -319,9 +328,10 @@ eight.addEventListener('click', () => {
 
 const nine = document.querySelector('#nine');
 nine.addEventListener('click', () => {
+    displae.textContent = ''; // this line gets rid of the initial leading 0
     temp = '9';
-    sum = sum + temp;
-    displae.textContent = sum;
+    screen = screen + temp;
+    displae.textContent = screen;
 
     // this code makes the node symbol blink when clicked
     nine.classList.add('blink'); 
@@ -330,9 +340,10 @@ nine.addEventListener('click', () => {
 
 const deci = document.querySelector('#deci');
 deci.addEventListener('click', () => {
+    displae.textContent = ''; // this line gets rid of the initial leading 0
     temp = '.';
-    sum = sum + temp;
-    displae.textContent = sum;
+    screen = screen + temp;
+    displae.textContent = screen;
 
      // this code makes the node symbol blink when clicked
      deci.classList.add('blink'); 
