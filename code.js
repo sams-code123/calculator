@@ -1,6 +1,4 @@
-// here is the javascript for a calculator app
-
-// note to self: there is a 0 on the display from the html that stays on the screen during the first button click
+// here is the javascript for the calculator app
 
 // here I create functions for basic operations
 function add(x, y){
